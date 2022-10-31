@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Raleway:wght@700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#nav_hover {
+  @apply bg-gradient-to-r from-blue-500 to-blue-500;
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 50% calc(100% - 0px);
+  display: inline-block;
+  transition: background-size 0.3s;
+}
+
+#nav_hover:hover {
+  background-size: 100% 2px;
+}
+
+#nav_hover::focus {
+  background-size: 100% 2px;
+}
+
+#hover {
+  @apply bg-gradient-to-r from-blue-500 to-blue-500;
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 50% calc(100% - 0px);
+  display: inline-block;
+  transition: background-size 0.3s;
+  background-size: 100% 2px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
