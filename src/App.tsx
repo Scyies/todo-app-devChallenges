@@ -14,7 +14,7 @@ function App() {
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
 
   const storageInfo = localStorage.getItem('todos');
-  const storedTodos = JSON.parse(storageInfo!);
+  const storedTodos = storageInfo?.length! > 0 && JSON.parse(storageInfo!);
 
   function addTodo() {
     if (!input) return console.error('Favor preencher algo');
@@ -39,12 +39,13 @@ function App() {
       });
       return newState;
     });
-    storedTodos.map((obj: ITodo) => {
+    const updatedStorage = todo.map((obj: ITodo) => {
       if (obj.id === id) {
         return { ...obj, completed: !obj.completed };
       }
       return obj;
     });
+    localStorage.setItem('todos', JSON.stringify(updatedStorage));
   }
 
   function displayTodos(filter: string) {
