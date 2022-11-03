@@ -77,10 +77,10 @@ function App() {
   }, []);
   return (
     <div className='min-h-screen'>
-      <header className='text-gray-700 font-raleway text-4xl mt-8 text-center'>
+      <header className='text-gray-700 font-raleway text-4xl pt-8 text-center'>
         #todo
       </header>
-      <main className='font-montSerrat flex flex-col mx-auto mt-16 max-w-xl w-full text-center gap-5'>
+      <main className='font-montSerrat flex flex-col mx-auto mt-16 max-w-xl w-full text-center gap-5 min-h-[calc(100vh-220px)]'>
         <nav className='flex list-none justify-around text-gray-700 border-b border-gray-200 font-semibold'>
           <li
             id={`${filter === 'all' ? 'hover' : 'nav_hover'}`}
@@ -145,6 +145,10 @@ function App() {
           )}
         </section>
       </main>
+      <footer className='text-center py-6 mx-auto text-gray-500'>
+        created by <span className='font-bold underline'>Sérgio Valério</span> -
+        devChallenges.io{' '}
+      </footer>
     </div>
   );
 }
