@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { Checkbox } from './components/Checkbox';
 
@@ -16,7 +16,8 @@ function App() {
   const storageInfo = localStorage.getItem('todos');
   const storedTodos = storageInfo?.length! > 0 && JSON.parse(storageInfo!);
 
-  function addTodo() {
+  function addTodo(e: FormEvent) {
+    e.preventDefault();
     if (!input) return console.error('Favor preencher algo');
     setTodo((prev) => [
       ...prev,
@@ -104,7 +105,7 @@ function App() {
             Completed
           </li>
         </nav>
-        <div className='flex gap-6 w-full'>
+        <form onSubmit={addTodo} className='flex gap-6 w-full'>
           <input
             type='text'
             className='flex-1 px-3 py-5 outline-none border border-gray-200 rounded-xl'
@@ -114,11 +115,11 @@ function App() {
           />
           <button
             className='py-5 px-10 bg-blue-500 rounded-lg text-white font-semibold hover:bg-blue-500/80'
-            onClick={addTodo}
+            type='submit'
           >
             Add
           </button>
-        </div>
+        </form>
         <section className='flex flex-col gap-5 font-montSerrat font-medium'>
           {todo &&
             displayTodos(filter)?.map(({ id, description, completed }) => (
